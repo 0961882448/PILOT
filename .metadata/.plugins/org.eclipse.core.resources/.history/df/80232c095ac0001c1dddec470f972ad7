@@ -1,0 +1,28 @@
+$(document).ready(function (){
+	var $productInfoForm = $('#productInfoForm');
+	var $productInfoModal = $('#productInfoModal');
+	var $productTable;
+	
+	
+
+});
+function searchProduct(){
+	productTable = $('#productInfoTable').DataTable({
+		processing: true,
+		serverSide: true,
+		aaSorting: [3,"desc"],
+		ajax:{
+			url: 'product/api/productList',
+			dataType: 'json',
+			contentType: 'application/json; charset=utf-8',
+			type: "POST",
+			data: function(setting) {
+				var seachCondition = {
+					priceFrom: $('#priceFrom').val(),
+					priceTo: $('#priceTo').val(),
+					keyword: $('#keyword').val() 
+				}
+			}
+		}
+	})
+}
